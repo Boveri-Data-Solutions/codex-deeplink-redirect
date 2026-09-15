@@ -1,12 +1,27 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
   <title>Opening Codex…</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { background: #000; color: #f5f5f5; font-family: system-ui, sans-serif; }
+    body { margin: 0; min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 2rem; text-align: center; }
+    h1 { margin: 0 0 .75rem; font-size: 1.5rem; font-weight: 600; letter-spacing: -.03em; }
+    p { margin: 0 0 1.75rem; color: #999; line-height: 1.6; }
+    a { display: inline-block; padding: 1rem 2.5rem; border: 1px solid #383838; border-radius: .875rem; background: #1c1c1c; color: #fff; font-size: 1rem; font-weight: 600; text-decoration: none; }
+    a:hover { background: #292929; border-color: #555; }
+    a:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+  </style>
 </head>
-<body style="font-family: system-ui; padding: 2rem;">
-  <p>Opening Codex…</p>
-  <p>If nothing happens, <a id="fallback" href="#">click here</a>.</p>
+<body>
+  <main>
+    <h1>Opening Codex…</h1>
+    <p>If it doesn’t open automatically, click below.</p>
+    <a id="fallback" href="#">Open Codex</a>
+  </main>
   <script>
     const id = new URLSearchParams(location.search).get("id");
     if (id) {
@@ -14,7 +29,7 @@
       document.getElementById("fallback").href = target;
       location.replace(target);
     } else {
-      document.body.innerHTML = "<p>Missing <code>?id=</code> query parameter.</p>";
+      document.querySelector("main").innerHTML = "<h1>No task specified</h1><p>Missing <code>?id=</code> query parameter.</p>";
     }
   </script>
 </body>
